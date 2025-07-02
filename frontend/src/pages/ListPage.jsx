@@ -12,7 +12,7 @@ export default function ListPage({ uid }) {
   useEffect(() => {
     async function fetchPages() {
       try {
-        const res = await fetch(`${API_BASE_URL}/pages?uid=${uid}`);
+
         const data = await res.json();
         setPages(data.pages || []);
         setMessage(`${data.pages.length} 件取得`);

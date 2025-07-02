@@ -23,7 +23,7 @@ export default function AddPage() {
     }
 
     const res = await fetch(
-      `${API_BASE_URL}/pages`,
+
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
