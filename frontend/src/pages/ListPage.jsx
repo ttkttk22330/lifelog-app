@@ -1,6 +1,8 @@
 // frontend/src/pages/ListPage.jsx
 import React, { useEffect, useState } from "react";
-import { db } from "../firebase"; // ✅ 修正済みのパス
+import { Link } from "react-router-dom";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function ListPage({ uid }) {
   const [pages, setPages] = useState([]);
@@ -10,9 +12,7 @@ export default function ListPage({ uid }) {
   useEffect(() => {
     async function fetchPages() {
       try {
-        const res = await fetch(
-          `https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/listPages?uid=${uid}`
-        );
+        const res = await fetch(`${API_BASE_URL}/pages?uid=${uid}`);
         const data = await res.json();
         setPages(data.pages || []);
         setMessage(`${data.pages.length} 件取得`);
@@ -30,6 +30,9 @@ export default function ListPage({ uid }) {
   return (
     <div>
       <h2>ページ一覧</h2>
+      <p>
+        <Link to="/pages/new">新規作成</Link>
+      </p>
       {loading ? (
         <p>読み込み中...</p>
       ) : (
@@ -37,7 +40,9 @@ export default function ListPage({ uid }) {
           <p>{message}</p>
           <ul>
             {pages.map((page) => (
-              <li key={page.id}>{page.title}</li>
+              <li key={page.id}>
+                <Link to={`/pages/${page.id}`}>{page.title}</Link>
+              </li>
             ))}
           </ul>
         </div>
