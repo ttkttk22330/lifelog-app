@@ -52,9 +52,3 @@ router.post("/pages", async (req, res) => {
   } catch (error) {
     console.error("Error adding page:", error);
     res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
-app.use("/api", router);
-
-exports.api = functions.onRequest({ region: "asia-northeast1" }, app);

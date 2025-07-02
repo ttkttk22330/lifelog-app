@@ -1,6 +1,9 @@
 // /frontend/src/pages/AddPage.jsx
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function AddPage() {
   const [title, setTitle] = useState("");
@@ -20,7 +23,7 @@ export default function AddPage() {
     }
 
     const res = await fetch(
-      "https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/pages",
+
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,6 +60,7 @@ export default function AddPage() {
         <button type="submit">追加</button>
       </form>
       {message && <p>{message}</p>}
+      <p><Link to="/">一覧へ戻る</Link></p>
     </div>
   );
 }
