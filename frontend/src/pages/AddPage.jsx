@@ -20,7 +20,7 @@ export default function AddPage() {
     }
 
     const res = await fetch(
-      "https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/addPage",
+      "https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/pages",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
