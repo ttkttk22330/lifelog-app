@@ -11,7 +11,7 @@ export default function ListPage({ uid }) {
     async function fetchPages() {
       try {
         const res = await fetch(
-          `https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/listPages?uid=${uid}`
+          `https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/pages?uid=${uid}`
         );
         const data = await res.json();
         setPages(data.pages || []);
