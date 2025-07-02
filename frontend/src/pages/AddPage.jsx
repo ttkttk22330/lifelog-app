@@ -47,7 +47,7 @@ export default function AddPage() {
   };
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "600px", margin: "auto" }}>
+    <div>
       <h1>ページ追加</h1>
       <form onSubmit={handleSubmit}>
         <div><label>タイトル：</label><input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required /></div>
