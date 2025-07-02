@@ -10,9 +10,8 @@ export default function ListPage({ uid }) {
   useEffect(() => {
     async function fetchPages() {
       try {
-        const res = await fetch(
-          `https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/listPages?uid=${uid}`
-        );
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+        const res = await fetch(`${API_BASE}/api/pages?uid=${uid}`);
         const data = await res.json();
         setPages(data.pages || []);
         setMessage(`${data.pages.length} 件取得`);

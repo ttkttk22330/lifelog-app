@@ -19,9 +19,8 @@ export default function AddPage() {
       return;
     }
 
-    const res = await fetch(
-      "https://asia-northeast1-lifelog-app-6b84f.cloudfunctions.net/api/addPage",
-      {
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+    const res = await fetch(`${API_BASE}/api/pages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
